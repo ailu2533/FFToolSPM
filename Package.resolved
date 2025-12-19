@@ -1,0 +1,15 @@
+{
+  "originHash" : "75cc3ab08f08c87ceac46ce486ecc012cd568a163c9a0e6da1ab796c430449bb",
+  "pins" : [
+    {
+      "identity" : "ffmpegkitspm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ailu2533/FFmpegKitSPM.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9d6734fa8154fe0c13fca477c924fa3dc8198dce"
+      }
+    }
+  ],
+  "version" : 3
+}
