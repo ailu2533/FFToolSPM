@@ -21,7 +21,12 @@ let package = Package(
         .binaryTarget(name: "FFmpegKit", path: "FFmpegKit.xcframework"),
         .target(
             name: "FFToolSPM",
-            dependencies: ["FFmpegKit"]),
-
+            dependencies: [
+                "FFmpegKit",
+                .product(name: "FFmpegKitSPM", package: "FFmpegKitSPM")
+            ]),
+        .testTarget(
+            name: "FFToolSPMTests",
+            dependencies: ["FFToolSPM"]),
     ]
 )
