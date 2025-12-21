@@ -23,11 +23,15 @@
 #import <Foundation/Foundation.h>
 #import "Statistics.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>Callback that receives statistics generated for <code>FFmpegKit</code> sessions.
  *
  * @param statistics statistics entry
  */
 typedef void (^StatisticsCallback)(Statistics* statistics) NS_SWIFT_SENDABLE;
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_STATISTICS_CALLBACK_H

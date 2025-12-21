@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param log log entry
  */
-typedef void (^LogCallback)(Log* _Nullable log) NS_SWIFT_SENDABLE NS_SWIFT_NAME(LogCallback);
+typedef void (^LogCallback)(Log* log) NS_SWIFT_SENDABLE NS_SWIFT_NAME(LogCallback);
 
 NS_ASSUME_NONNULL_END
 

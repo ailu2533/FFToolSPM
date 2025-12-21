@@ -20,7 +20,11 @@
 #ifndef FFMPEG_KIT_FFMPEG_SESSION_COMPLETE_CALLBACK_H
 #define FFMPEG_KIT_FFMPEG_SESSION_COMPLETE_CALLBACK_H
 
+#import <Foundation/Foundation.h>
+
 @class FFmpegSession;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  * <p>Callback function that is invoked when an asynchronous <code>FFmpeg</code> session has ended.
@@ -44,6 +48,8 @@
  * @param session session of the completed execution
  */
 typedef void (^FFmpegSessionCompleteCallback)(FFmpegSession* session) NS_SWIFT_SENDABLE;
+
+NS_ASSUME_NONNULL_END
 
 #import "FFmpegSession.h"
 
