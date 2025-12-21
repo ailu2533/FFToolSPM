@@ -20,10 +20,12 @@
 #ifndef FFMPEG_KIT_LEVEL_H
 #define FFMPEG_KIT_LEVEL_H
 
+#import <Foundation/Foundation.h>
+
 /**
  * <p>Enumeration type for log levels.
  */
-typedef NS_ENUM(NSUInteger, Level) {
+typedef NS_ENUM(NSInteger, Level) {
     
     /**
      * This log level is defined by FFmpegKit. It is used to specify logs printed to stderr by
@@ -80,6 +82,6 @@ typedef NS_ENUM(NSUInteger, Level) {
      */
     LevelAVLogTrace = 56
 
-};
+} NS_SWIFT_NAME(Level);
 
 #endif // FFMPEG_KIT_LEVEL_H

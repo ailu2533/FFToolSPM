@@ -27,9 +27,12 @@
 #import "ReturnCode.h"
 #import "SessionState.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>Common interface for all <code>FFmpegKit</code> sessions.
  */
+NS_SWIFT_NAME(Session)
 @protocol Session
 
 @required
@@ -37,37 +40,37 @@
 /**
  * Returns the session specific log callback.
  *
- * @return session specific log callback
+ * @return session specific log callback (nullable)
  */
-- (LogCallback)getLogCallback;
+- (nullable LogCallback)getLogCallback NS_SWIFT_NAME(getLogCallback());
 
 /**
  * Returns the session identifier.
  *
  * @return session identifier
  */
-- (long)getSessionId;
+- (long)getSessionId NS_SWIFT_NAME(getSessionId());
 
 /**
  * Returns session create time.
  *
  * @return session create time
  */
-- (NSDate*)getCreateTime;
+- (NSDate*)getCreateTime NS_SWIFT_NAME(getCreateTime());
 
 /**
  * Returns session start time.
  *
- * @return session start time
+ * @return session start time (nullable if not started)
  */
-- (NSDate*)getStartTime;
+- (nullable NSDate*)getStartTime NS_SWIFT_NAME(getStartTime());
 
 /**
  * Returns session end time.
  *
- * @return session end time
+ * @return session end time (nullable if not ended)
  */
-- (NSDate*)getEndTime;
+- (nullable NSDate*)getEndTime NS_SWIFT_NAME(getEndTime());
 
 /**
  * Returns the time taken to execute this session.
@@ -75,7 +78,7 @@
  * @return time taken to execute this session in milliseconds or zero (0) if the session is
  * not over yet
  */
-- (long)getDuration;
+- (long)getDuration NS_SWIFT_NAME(getDuration());
 
 /**
  * Returns command arguments as an array.
@@ -251,5 +254,7 @@
 - (void)cancel;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_SESSION_H

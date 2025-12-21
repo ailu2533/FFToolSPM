@@ -22,19 +22,49 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>Log entry for an <code>FFmpegKit</code> session.
  */
+NS_SWIFT_NAME(Log)
 @interface Log : NSObject
 
-- (instancetype)init:(long)sessionId :(int)level :(NSString*)message;
+/**
+ * Creates a new log entry.
+ *
+ * @param sessionId session identifier
+ * @param level     log level
+ * @param message   log message
+ * @return initialized log instance
+ */
+- (instancetype)init:(long)sessionId 
+               level:(int)level 
+             message:(NSString*)message NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(sessionId:level:message:));
 
-- (long)getSessionId;
+/**
+ * Returns the session identifier.
+ *
+ * @return session identifier
+ */
+- (long)getSessionId NS_SWIFT_NAME(getSessionId());
 
-- (int)getLevel;
+/**
+ * Returns the log level.
+ *
+ * @return log level
+ */
+- (int)getLevel NS_SWIFT_NAME(getLevel());
 
-- (NSString*)getMessage;
+/**
+ * Returns the log message.
+ *
+ * @return log message
+ */
+- (NSString*)getMessage NS_SWIFT_NAME(getMessage());
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_LOG_H

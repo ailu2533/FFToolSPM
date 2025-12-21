@@ -22,29 +22,54 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Statistics entry for an FFmpeg execute session.
  */
+NS_SWIFT_NAME(Statistics)
 @interface Statistics : NSObject
 
-- (instancetype)init:(long)sessionId videoFrameNumber:(int)videoFrameNumber videoFps:(float)videoFps videoQuality:(float)videoQuality size:(int64_t)size time:(double)time bitrate:(double)bitrate speed:(double)speed;
+/**
+ * Creates a new statistics entry.
+ *
+ * @param sessionId        session identifier
+ * @param videoFrameNumber video frame number
+ * @param videoFps         video frames per second
+ * @param videoQuality     video quality value
+ * @param size             output size in bytes
+ * @param time             processing time in seconds
+ * @param bitrate          bitrate in kbps
+ * @param speed            processing speed
+ * @return initialized statistics instance
+ */
+- (instancetype)init:(long)sessionId 
+   videoFrameNumber:(int)videoFrameNumber 
+           videoFps:(float)videoFps 
+       videoQuality:(float)videoQuality 
+               size:(int64_t)size 
+               time:(double)time 
+            bitrate:(double)bitrate 
+              speed:(double)speed NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(sessionId:videoFrameNumber:videoFps:videoQuality:size:time:bitrate:speed:));
 
-- (long)getSessionId;
+- (long)getSessionId NS_SWIFT_NAME(getSessionId());
 
-- (int)getVideoFrameNumber;
+- (int)getVideoFrameNumber NS_SWIFT_NAME(getVideoFrameNumber());
 
-- (float)getVideoFps;
+- (float)getVideoFps NS_SWIFT_NAME(getVideoFps());
 
-- (float)getVideoQuality;
+- (float)getVideoQuality NS_SWIFT_NAME(getVideoQuality());
 
-- (long)getSize;
+- (long)getSize NS_SWIFT_NAME(getSize());
 
-- (double)getTime;
+- (double)getTime NS_SWIFT_NAME(getTime());
 
-- (double)getBitrate;
+- (double)getBitrate NS_SWIFT_NAME(getBitrate());
 
-- (double)getSpeed;
+- (double)getSpeed NS_SWIFT_NAME(getSpeed());
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_STATISTICS_H

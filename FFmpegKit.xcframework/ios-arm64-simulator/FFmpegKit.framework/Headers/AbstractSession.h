@@ -23,6 +23,8 @@
 #import <Foundation/Foundation.h>
 #import "Session.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Defines how long default "getAll" methods wait, in milliseconds.
  */
@@ -32,24 +34,30 @@ extern int const AbstractSessionDefaultTimeoutForAsynchronousMessagesInTransmit;
  * Abstract session implementation which includes common features shared by <code>FFmpeg</code>,
  * <code>FFprobe</code> and <code>MediaInformation</code> sessions.
  */
+NS_SWIFT_NAME(AbstractSession)
 @interface AbstractSession : NSObject<Session>
 
 /**
  * Creates a new abstract session.
  *
- * @param arguments              command arguments
- * @param logCallback            session specific log callback
+ * @param arguments              command arguments as string array
+ * @param logCallback            session specific log callback (nullable)
  * @param logRedirectionStrategy session specific log redirection strategy
+ * @return initialized session instance
  */
-- (instancetype)init:(NSArray*)arguments withLogCallback:(LogCallback)logCallback withLogRedirectionStrategy:(LogRedirectionStrategy)logRedirectionStrategy;
+- (instancetype)init:(NSArray<NSString*>*)arguments 
+     withLogCallback:(nullable LogCallback)logCallback 
+withLogRedirectionStrategy:(LogRedirectionStrategy)logRedirectionStrategy NS_DESIGNATED_INITIALIZER;
 
 /**
  * Waits for all asynchronous messages to be transmitted until the given timeout.
  *
  * @param timeout wait timeout in milliseconds
  */
-- (void)waitForAsynchronousMessagesInTransmit:(int)timeout;
+- (void)waitForAsynchronousMessagesInTransmit:(int)timeout NS_SWIFT_NAME(waitForAsynchronousMessages(timeout:));
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_ABSTRACT_SESSION_H

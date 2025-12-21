@@ -27,6 +27,8 @@
 #import "FFmpegSession.h"
 #import "StatisticsCallback.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>Main class to run <code>FFmpeg</code> commands. Supports executing commands both synchronously and
  * asynchronously.
@@ -48,7 +50,7 @@
  * @param arguments FFmpeg command options/arguments as string array
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeWithArguments:(NSArray*)arguments;
++ (FFmpegSession*)executeWithArguments:(NSArray<NSString*>*)arguments NS_SWIFT_NAME(execute(arguments:));
 
 /**
  * <p>Starts an asynchronous FFmpeg execution with arguments provided.
@@ -60,7 +62,9 @@
  * @param completeCallback callback that will be called when the execution has completed
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeWithArgumentsAsync:(NSArray*)arguments withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback;
++ (FFmpegSession*)executeWithArgumentsAsync:(NSArray<NSString*>*)arguments 
+                       withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback 
+NS_SWIFT_NAME(executeAsync(arguments:completeCallback:));
 
 /**
  * <p>Starts an asynchronous FFmpeg execution with arguments provided.
@@ -74,7 +78,7 @@
  * @param statisticsCallback  callback that will receive statistics
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeWithArgumentsAsync:(NSArray*)arguments withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback withLogCallback:(LogCallback)logCallback withStatisticsCallback:(StatisticsCallback)statisticsCallback;
++ (FFmpegSession*)executeWithArgumentsAsync:(NSArray<NSString*>*)arguments withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback withLogCallback:(nullable LogCallback)logCallback withStatisticsCallback:(nullable StatisticsCallback)statisticsCallback;
 
 /**
  * <p>Starts an asynchronous FFmpeg execution with arguments provided.
@@ -87,7 +91,7 @@
  * @param queue            dispatch queue that will be used to run this asynchronous operation
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeWithArgumentsAsync:(NSArray*)arguments withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback onDispatchQueue:(dispatch_queue_t)queue;
++ (FFmpegSession*)executeWithArgumentsAsync:(NSArray<NSString*>*)arguments withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback onDispatchQueue:(dispatch_queue_t)queue;
 
 /**
  * <p>Starts an asynchronous FFmpeg execution with arguments provided.
@@ -102,7 +106,7 @@
  * @param queue               dispatch queue that will be used to run this asynchronous operation
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeWithArgumentsAsync:(NSArray*)arguments withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback withLogCallback:(LogCallback)logCallback withStatisticsCallback:(StatisticsCallback)statisticsCallback onDispatchQueue:(dispatch_queue_t)queue;
++ (FFmpegSession*)executeWithArgumentsAsync:(NSArray<NSString*>*)arguments withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback withLogCallback:(nullable LogCallback)logCallback withStatisticsCallback:(nullable StatisticsCallback)statisticsCallback onDispatchQueue:(dispatch_queue_t)queue;
 
 /**
  * <p>Synchronously executes FFmpeg command provided. Space character is used to split command
@@ -125,7 +129,7 @@
  * @param completeCallback callback that will be called when the execution has completed
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback;
++ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback;
 
 /**
  * <p>Starts an asynchronous FFmpeg execution for the given command. Space character is used to split the command
@@ -140,7 +144,7 @@
  * @param statisticsCallback  callback that will receive statistics
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback withLogCallback:(LogCallback)logCallback withStatisticsCallback:(StatisticsCallback)statisticsCallback;
++ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback withLogCallback:(nullable LogCallback)logCallback withStatisticsCallback:(nullable StatisticsCallback)statisticsCallback;
 
 /**
  * <p>Starts an asynchronous FFmpeg execution for the given command. Space character is used to split the command
@@ -154,7 +158,7 @@
  * @param queue            dispatch queue that will be used to run this asynchronous operation
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback onDispatchQueue:(dispatch_queue_t)queue;
++ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback onDispatchQueue:(dispatch_queue_t)queue;
 
 /**
  * <p>Starts an asynchronous FFmpeg execution for the given command. Space character is used to split the command
@@ -170,7 +174,7 @@
  * @param queue               dispatch queue that will be used to run this asynchronous operation
  * @return FFmpeg session created for this execution
  */
-+ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback withLogCallback:(LogCallback)logCallback withStatisticsCallback:(StatisticsCallback)statisticsCallback onDispatchQueue:(dispatch_queue_t)queue;
++ (FFmpegSession*)executeAsync:(NSString*)command withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback withLogCallback:(nullable LogCallback)logCallback withStatisticsCallback:(nullable StatisticsCallback)statisticsCallback onDispatchQueue:(dispatch_queue_t)queue;
 
 /**
  * <p>Cancels all running sessions.
@@ -193,8 +197,10 @@
  *
  * @return all FFmpeg sessions in the session history
  */
-+ (NSArray*)listSessions;
++ (NSArray<FFmpegSession*>*)listSessions;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_H

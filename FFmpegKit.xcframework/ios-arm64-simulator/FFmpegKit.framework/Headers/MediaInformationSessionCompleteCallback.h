@@ -44,7 +44,7 @@
  *
  * @param session session of the completed execution
  */
-typedef void (^MediaInformationSessionCompleteCallback)(MediaInformationSession* session);
+typedef void (^MediaInformationSessionCompleteCallback)(MediaInformationSession* session) NS_SWIFT_SENDABLE;
 
 #import "MediaInformationSession.h"
 

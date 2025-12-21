@@ -43,7 +43,7 @@
  *
  * @param session session of the completed execution
  */
-typedef void (^FFmpegSessionCompleteCallback)(FFmpegSession* session);
+typedef void (^FFmpegSessionCompleteCallback)(FFmpegSession* session) NS_SWIFT_SENDABLE;
 
 #import "FFmpegSession.h"
 

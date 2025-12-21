@@ -22,6 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString* const StreamKeyIndex;
 extern NSString* const StreamKeyType;
 extern NSString* const StreamKeyCodec;
@@ -46,178 +48,181 @@ extern NSString* const StreamKeyTags;
 /**
  * Stream information class.
  */
+NS_SWIFT_NAME(StreamInformation)
 @interface StreamInformation : NSObject
 
-- (instancetype)init:(NSDictionary*)streamDictionary;
+- (instancetype)init:(NSDictionary<NSString*, id>*)streamDictionary NS_DESIGNATED_INITIALIZER;
 
 /**
  * Returns stream index.
  *
  * @return stream index, starting from zero
  */
-- (NSNumber*)getIndex;
+- (nullable NSNumber*)getIndex NS_SWIFT_NAME(getIndex());
 
 /**
  * Returns stream type.
  *
  * @return stream type; audio or video
  */
-- (NSString*)getType;
+- (nullable NSString*)getType NS_SWIFT_NAME(getType());
 
 /**
  * Returns stream codec.
  *
  * @return stream codec
  */
-- (NSString*)getCodec;
+- (nullable NSString*)getCodec NS_SWIFT_NAME(getCodec());
 
 /**
  * Returns stream codec in long format.
  *
  * @return stream codec with additional profile and mode information
  */
-- (NSString*)getCodecLong;
+- (nullable NSString*)getCodecLong NS_SWIFT_NAME(getCodecLong());
 
 /**
  * Returns stream format.
  *
  * @return stream format
  */
-- (NSString*)getFormat;
+- (nullable NSString*)getFormat NS_SWIFT_NAME(getFormat());
 
 /**
  * Returns width.
  *
  * @return width in pixels
  */
-- (NSNumber*)getWidth;
+- (nullable NSNumber*)getWidth NS_SWIFT_NAME(getWidth());
 
 /**
  * Returns height.
  *
  * @return height in pixels
  */
-- (NSNumber*)getHeight;
+- (nullable NSNumber*)getHeight NS_SWIFT_NAME(getHeight());
 
 /**
  * Returns bitrate.
  *
  * @return bitrate in kb/s
  */
-- (NSString*)getBitrate;
+- (nullable NSString*)getBitrate NS_SWIFT_NAME(getBitrate());
 
 /**
  * Returns sample rate.
  *
  * @return sample rate in hz
  */
-- (NSString*)getSampleRate;
+- (nullable NSString*)getSampleRate NS_SWIFT_NAME(getSampleRate());
 
 /**
  * Returns sample format.
  *
  * @return sample format
  */
-- (NSString*)getSampleFormat;
+- (nullable NSString*)getSampleFormat NS_SWIFT_NAME(getSampleFormat());
 
 /**
  * Returns channel count.
  *
  * @return channel count
  */
-- (NSNumber*)getChannelCount;
+- (nullable NSNumber*)getChannelCount NS_SWIFT_NAME(getChannelCount());
 
 /**
  * Returns channel layout.
  *
  * @return channel layout
  */
-- (NSString*)getChannelLayout;
+- (nullable NSString*)getChannelLayout NS_SWIFT_NAME(getChannelLayout());
 
 /**
  * Returns bits per sample.
  *
  * @return bits per sample
  */
-- (NSNumber*)getBitsPerSample;
+- (nullable NSNumber*)getBitsPerSample NS_SWIFT_NAME(getBitsPerSample());
 
 /**
  * Returns sample aspect ratio.
  *
  * @return sample aspect ratio
  */
-- (NSString*)getSampleAspectRatio;
+- (nullable NSString*)getSampleAspectRatio NS_SWIFT_NAME(getSampleAspectRatio());
 
 /**
  * Returns display aspect ratio.
  *
  * @return display aspect ratio
  */
-- (NSString*)getDisplayAspectRatio;
+- (nullable NSString*)getDisplayAspectRatio NS_SWIFT_NAME(getDisplayAspectRatio());
 
 /**
  * Returns average frame rate.
  *
  * @return average frame rate in fps
  */
-- (NSString*)getAverageFrameRate;
+- (nullable NSString*)getAverageFrameRate NS_SWIFT_NAME(getAverageFrameRate());
 
 /**
  * Returns real frame rate.
  *
  * @return real frame rate in tbr
  */
-- (NSString*)getRealFrameRate;
+- (nullable NSString*)getRealFrameRate NS_SWIFT_NAME(getRealFrameRate());
 
 /**
  * Returns time base.
  *
  * @return time base in tbn
  */
-- (NSString*)getTimeBase;
+- (nullable NSString*)getTimeBase NS_SWIFT_NAME(getTimeBase());
 
 /**
  * Returns codec time base.
  *
  * @return codec time base in tbc
  */
-- (NSString*)getCodecTimeBase;
+- (nullable NSString*)getCodecTimeBase NS_SWIFT_NAME(getCodecTimeBase());
 
 /**
  * Returns all tags.
  *
  * @return tags dictionary
  */
-- (NSDictionary*)getTags;
+- (nullable NSDictionary<NSString*, id>*)getTags NS_SWIFT_NAME(getTags());
 
 /**
  * Returns the stream property associated with the key.
  *
  * @return stream property as string or nil if the key is not found
  */
-- (NSString*)getStringProperty:(NSString*)key;
+- (nullable NSString*)getStringProperty:(NSString*)key NS_SWIFT_NAME(getStringProperty(_:));
 
 /**
  * Returns the stream property associated with the key.
  *
  * @return stream property as number or nil if the key is not found
  */
-- (NSNumber*)getNumberProperty:(NSString*)key;
+- (nullable NSNumber*)getNumberProperty:(NSString*)key NS_SWIFT_NAME(getNumberProperty(_:));
 
 /**
  * Returns the stream property associated with the key.
  *
  * @return stream property as id or nil if the key is not found
 */
-- (id)getProperty:(NSString*)key;
+- (nullable id)getProperty:(NSString*)key NS_SWIFT_NAME(getProperty(_:));
 
 /**
  * Returns all stream properties defined.
  *
  * @return all stream properties in a dictionary or nil if no properties are defined
 */
-- (NSDictionary*)getAllProperties;
+- (nullable NSDictionary<NSString*, id>*)getAllProperties NS_SWIFT_NAME(getAllProperties());
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_STREAM_INFORMATION_H

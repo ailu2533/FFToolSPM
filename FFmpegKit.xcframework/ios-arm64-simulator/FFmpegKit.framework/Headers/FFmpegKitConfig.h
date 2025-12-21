@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, Signal) {
  * @param path directory that contains fontconfig configuration (fonts.conf)
  * @return zero on success, non-zero on error
  */
-+ (int)setFontconfigConfigurationPath:(NSString*)path;
++ (int)setFontconfigConfigurationPath:(NSString*)path NS_SWIFT_NAME(setFontconfigConfigurationPath(_:));
 
 /**
  * <p>Registers the fonts inside the given path, so they become available to use in FFmpeg
@@ -85,10 +85,12 @@ typedef NS_ENUM(NSUInteger, Signal) {
  * fonts in <code>FFmpeg</code>.
  *
  * @param fontDirectoryPath directory that contains fonts (.ttf and .otf files)
- * @param fontNameMapping   custom font name mappings, useful to access your fonts with more
+ * @param fontNameMapping   custom font name mappings (nullable), useful to access your fonts with more
  *                          friendly names
  */
-+ (void)setFontDirectory:(NSString*)fontDirectoryPath with:(NSDictionary*)fontNameMapping;
++ (void)setFontDirectory:(NSString*)fontDirectoryPath 
+                    with:(nullable NSDictionary<NSString*, NSString*>*)fontNameMapping 
+NS_SWIFT_NAME(setFontDirectory(_:fontNameMapping:));
 
 /**
  * <p>Registers the fonts inside the given array of font directories, so they become available
@@ -99,10 +101,12 @@ typedef NS_ENUM(NSUInteger, Signal) {
  * fonts in <code>FFmpeg</code>.
  *
  * @param fontDirectoryList array of directories that contain fonts (.ttf and .otf files)
- * @param fontNameMapping   custom font name mappings, useful to access your fonts with more
+ * @param fontNameMapping   custom font name mappings (nullable), useful to access your fonts with more
  *                          friendly names
  */
-+ (void)setFontDirectoryList:(NSArray*)fontDirectoryList with:(NSDictionary*)fontNameMapping;
++ (void)setFontDirectoryList:(NSArray<NSString*>*)fontDirectoryList 
+                        with:(nullable NSDictionary<NSString*, NSString*>*)fontNameMapping 
+NS_SWIFT_NAME(setFontDirectoryList(_:fontNameMapping:));
 
 /**
  * <p>Creates a new named pipe to use in <code>FFmpeg</code> operations.
@@ -452,10 +456,10 @@ typedef NS_ENUM(NSUInteger, Signal) {
 /**
  * <p>Concatenates arguments into a string adding a space character between two arguments.
  *
- * @param arguments arguments
+ * @param arguments arguments as string array
  * @return concatenated string containing all arguments
  */
-+ (NSString*)argumentsToString:(NSArray*)arguments;
++ (NSString*)argumentsToString:(NSArray<NSString*>*)arguments NS_SWIFT_NAME(argumentsToString(_:));
 
 @end
 

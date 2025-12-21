@@ -28,6 +28,6 @@
  *
  * @param statistics statistics entry
  */
-typedef void (^StatisticsCallback)(Statistics* statistics);
+typedef void (^StatisticsCallback)(Statistics* statistics) NS_SWIFT_SENDABLE;
 
 #endif // FFMPEG_KIT_STATISTICS_CALLBACK_H

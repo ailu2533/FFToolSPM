@@ -43,7 +43,7 @@
  *
  * @param session session of the completed execution
  */
-typedef void (^FFprobeSessionCompleteCallback)(FFprobeSession* session);
+typedef void (^FFprobeSessionCompleteCallback)(FFprobeSession* session) NS_SWIFT_SENDABLE;
 
 #import "FFprobeSession.h"
 

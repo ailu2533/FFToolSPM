@@ -20,11 +20,16 @@
 #ifndef FFMPEG_KIT_SESSION_STATE_H
 #define FFMPEG_KIT_SESSION_STATE_H
 
-typedef NS_ENUM(NSUInteger, SessionState) {
-    SessionStateCreated,
-    SessionStateRunning,
-    SessionStateFailed,
-    SessionStateCompleted
-};
+#import <Foundation/Foundation.h>
+
+/**
+ * Session state enumeration.
+ */
+typedef NS_ENUM(NSInteger, SessionState) {
+    SessionStateCreated = 0,
+    SessionStateRunning = 1,
+    SessionStateFailed = 2,
+    SessionStateCompleted = 3
+} NS_SWIFT_NAME(SessionState);
 
 #endif // FFMPEG_KIT_SESSION_STATE_H

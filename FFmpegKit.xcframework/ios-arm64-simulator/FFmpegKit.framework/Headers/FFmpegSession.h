@@ -25,27 +25,32 @@
 #import "StatisticsCallback.h"
 #import "FFmpegSessionCompleteCallback.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>An FFmpeg session.
  */
+NS_SWIFT_NAME(FFmpegSession)
 @interface FFmpegSession : AbstractSession
 
 /**
  * Builds a new FFmpeg session.
  *
- * @param arguments command arguments
+ * @param arguments command arguments as string array
  * @return created session
  */
-+ (instancetype)create:(NSArray*)arguments;
++ (instancetype)create:(NSArray<NSString*>*)arguments NS_SWIFT_NAME(create(arguments:));
 
 /**
  * Builds a new FFmpeg session.
  *
- * @param arguments         command arguments
- * @param completeCallback  session specific complete callback
+ * @param arguments         command arguments as string array
+ * @param completeCallback  session specific complete callback (nullable)
  * @return created session
  */
-+ (instancetype)create:(NSArray*)arguments withCompleteCallback:(FFmpegSessionCompleteCallback)completeCallback;
++ (instancetype)create:(NSArray<NSString*>*)arguments 
+  withCompleteCallback:(nullable FFmpegSessionCompleteCallback)completeCallback 
+NS_SWIFT_NAME(create(arguments:completeCallback:));
 
 /**
  * Builds a new FFmpeg session.
@@ -73,16 +78,16 @@
 /**
  * Returns the session specific statistics callback.
  *
- * @return session specific statistics callback
+ * @return session specific statistics callback (nullable)
  */
-- (StatisticsCallback)getStatisticsCallback;
+- (nullable StatisticsCallback)getStatisticsCallback NS_SWIFT_NAME(getStatisticsCallback());
 
 /**
  * Returns the session specific complete callback.
  *
- * @return session specific complete callback
+ * @return session specific complete callback (nullable)
  */
-- (FFmpegSessionCompleteCallback)getCompleteCallback;
+- (nullable FFmpegSessionCompleteCallback)getCompleteCallback NS_SWIFT_NAME(getCompleteCallback());
 
 /**
  * Returns all statistics entries generated for this session. If there are asynchronous
@@ -91,7 +96,7 @@
  * @param waitTimeout wait timeout for asynchronous messages in milliseconds
  * @return list of statistics entries generated for this session
  */
-- (NSArray*)getAllStatisticsWithTimeout:(int)waitTimeout;
+- (NSArray<Statistics*>*)getAllStatisticsWithTimeout:(int)waitTimeout NS_SWIFT_NAME(getAllStatistics(timeout:));
 
 /**
  * Returns all statistics entries generated for this session. If there are asynchronous
@@ -100,7 +105,7 @@
  *
  * @return list of statistics entries generated for this session
  */
-- (NSArray*)getAllStatistics;
+- (NSArray<Statistics*>*)getAllStatistics NS_SWIFT_NAME(getAllStatistics());
 
 /**
  * Returns all statistics entries delivered for this session. Note that if there are
@@ -109,7 +114,7 @@
  *
  * @return list of statistics entries received for this session
  */
-- (NSArray*)getStatistics;
+- (NSArray<Statistics*>*)getStatistics NS_SWIFT_NAME(getStatistics());
 
 /**
  * Returns the last received statistics entry.
@@ -117,7 +122,7 @@
  * @return the last received statistics entry or nil if there are not any statistics entries
  * received
  */
-- (Statistics*)getLastReceivedStatistics;
+- (nullable Statistics*)getLastReceivedStatistics NS_SWIFT_NAME(getLastReceivedStatistics());
 
 /**
  * Adds a new statistics entry for this session. It is invoked internally by <code>FFmpegKit</code> library methods.
@@ -125,8 +130,10 @@
  *
  * @param statistics statistics entry
  */
-- (void)addStatistics:(Statistics*)statistics;
+- (void)addStatistics:(Statistics*)statistics NS_SWIFT_NAME(add(statistics:));
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_FFMPEG_SESSION_H

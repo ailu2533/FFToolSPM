@@ -23,11 +23,15 @@
 #import <Foundation/Foundation.h>
 #import "Log.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * <p>Callback that receives logs generated for <code>FFmpegKit</code> sessions.
  *
  * @param log log entry
  */
-typedef void (^LogCallback)(Log* log);
+typedef void (^LogCallback)(Log* _Nullable log) NS_SWIFT_SENDABLE NS_SWIFT_NAME(LogCallback);
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_LOG_CALLBACK_H

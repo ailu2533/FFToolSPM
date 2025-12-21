@@ -24,6 +24,8 @@
 #import "Chapter.h"
 #import "StreamInformation.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString* const MediaKeyMediaProperties;
 extern NSString* const MediaKeyFilename;
 extern NSString* const MediaKeyFormat;
@@ -37,136 +39,155 @@ extern NSString* const MediaKeyTags;
 /**
  * Media information class.
  */
+NS_SWIFT_NAME(MediaInformation)
 @interface MediaInformation : NSObject
 
-- (instancetype)init:(NSDictionary*)mediaDictionary withStreams:(NSArray*)streams withChapters:(NSArray*)chapters;
+/**
+ * Creates a new media information instance.
+ *
+ * @param mediaDictionary media properties dictionary
+ * @param streams         array of stream information objects
+ * @param chapters        array of chapter objects
+ * @return initialized media information instance
+ */
+- (instancetype)init:(NSDictionary<NSString*, id>*)mediaDictionary 
+         withStreams:(NSArray<StreamInformation*>*)streams 
+        withChapters:(NSArray<Chapter*>*)chapters NS_DESIGNATED_INITIALIZER;
 
 /**
  * Returns file name.
  *
- * @return media file name
+ * @return media file name (nullable if not available)
  */
-- (NSString*)getFilename;
+- (nullable NSString*)getFilename NS_SWIFT_NAME(getFilename());
 
 /**
  * Returns format.
  *
- * @return media format
+ * @return media format (nullable if not available)
  */
-- (NSString*)getFormat;
+- (nullable NSString*)getFormat NS_SWIFT_NAME(getFormat());
 
 /**
  * Returns long format.
  *
- * @return media long format
+ * @return media long format (nullable if not available)
  */
-- (NSString*)getLongFormat;
+- (nullable NSString*)getLongFormat NS_SWIFT_NAME(getLongFormat());
 
 /**
  * Returns duration.
  *
- * @return media duration in "seconds.microseconds" format
+ * @return media duration in "seconds.microseconds" format (nullable if not available)
  */
-- (NSString*)getDuration;
+- (nullable NSString*)getDuration NS_SWIFT_NAME(getDuration());
 
 /**
  * Returns start time.
  *
- * @return media start time in milliseconds
+ * @return media start time in milliseconds (nullable if not available)
  */
-- (NSString*)getStartTime;
+- (nullable NSString*)getStartTime NS_SWIFT_NAME(getStartTime());
 
 /**
  * Returns size.
  *
- * @return media size in bytes
+ * @return media size in bytes (nullable if not available)
  */
-- (NSString*)getSize;
+- (nullable NSString*)getSize NS_SWIFT_NAME(getSize());
 
 /**
  * Returns bitrate.
  *
- * @return media bitrate in kb/s
+ * @return media bitrate in kb/s (nullable if not available)
  */
-- (NSString*)getBitrate;
+- (nullable NSString*)getBitrate NS_SWIFT_NAME(getBitrate());
 
 /**
  * Returns all tags.
  *
- * @return tags dictionary
+ * @return tags dictionary (nullable if no tags)
  */
-- (NSDictionary*)getTags;
+- (nullable NSDictionary<NSString*, NSString*>*)getTags NS_SWIFT_NAME(getTags());
 
 /**
  * Returns all streams.
  *
- * @return streams array
+ * @return array of stream information objects
  */
-- (NSArray*)getStreams;
+- (NSArray<StreamInformation*>*)getStreams NS_SWIFT_NAME(getStreams());
 
 /**
  * Returns all chapters.
  *
- * @return chapters array
+ * @return array of chapter objects
  */
-- (NSArray*)getChapters;
+- (NSArray<Chapter*>*)getChapters NS_SWIFT_NAME(getChapters());
 
 /**
  * Returns the property associated with the key.
  *
+ * @param key property key
  * @return property as string or nil if the key is not found
  */
-- (NSString*)getStringProperty:(NSString*)key;
+- (nullable NSString*)getStringProperty:(NSString*)key NS_SWIFT_NAME(getStringProperty(_:));
 
 /**
  * Returns the property associated with the key.
  *
+ * @param key property key
  * @return property as number or nil if the key is not found
  */
-- (NSNumber*)getNumberProperty:(NSString*)key;
+- (nullable NSNumber*)getNumberProperty:(NSString*)key NS_SWIFT_NAME(getNumberProperty(_:));
 
 /**
  * Returns the property associated with the key.
  *
- * @return property as id or nil if the key is not found
+ * @param key property key
+ * @return property or nil if the key is not found
 */
-- (id)getProperty:(NSString*)key;
+- (nullable id)getProperty:(NSString*)key NS_SWIFT_NAME(getProperty(_:));
 
 /**
  * Returns the format property associated with the key.
  *
+ * @param key property key
  * @return format property as string or nil if the key is not found
  */
-- (NSString*)getStringFormatProperty:(NSString*)key;
+- (nullable NSString*)getStringFormatProperty:(NSString*)key NS_SWIFT_NAME(getStringFormatProperty(_:));
 
 /**
  * Returns the format property associated with the key.
  *
+ * @param key property key
  * @return format property as number or nil if the key is not found
  */
-- (NSNumber*)getNumberFormatProperty:(NSString*)key;
+- (nullable NSNumber*)getNumberFormatProperty:(NSString*)key NS_SWIFT_NAME(getNumberFormatProperty(_:));
 
 /**
  * Returns the format property associated with the key.
  *
- * @return format property as id or nil if the key is not found
+ * @param key property key
+ * @return format property or nil if the key is not found
 */
-- (id)getFormatProperty:(NSString*)key;
+- (nullable id)getFormatProperty:(NSString*)key NS_SWIFT_NAME(getFormatProperty(_:));
 
 /**
  * Returns all format properties defined.
  *
  * @return all format properties in a dictionary or nil if no format properties are defined
 */
-- (NSDictionary*)getFormatProperties;
+- (nullable NSDictionary<NSString*, id>*)getFormatProperties NS_SWIFT_NAME(getFormatProperties());
 
 /**
  * Returns all properties defined.
  *
  * @return all properties in a dictionary or nil if no properties are defined
 */
-- (NSDictionary*)getAllProperties;
+- (nullable NSDictionary<NSString*, id>*)getAllProperties NS_SWIFT_NAME(getAllProperties());
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif // FFMPEG_KIT_MEDIA_INFORMATION_H
